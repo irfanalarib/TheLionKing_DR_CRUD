@@ -15,6 +15,26 @@ namespace CRUDMahasiswaADO
             conn = new SqlConnection(connectionString);
         }
 
+        private void ConnectDataBase()
+        {
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                MessageBox.Show("Koneksi Berhasil");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Koneksi gagal: " + ex.Message);
+            }
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            ConnectDataBase();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
