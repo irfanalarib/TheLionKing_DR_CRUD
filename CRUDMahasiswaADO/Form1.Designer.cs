@@ -155,6 +155,7 @@
             this.btnConnect.TabIndex = 12;
             this.btnConnect.Text = "Membuka koneksi";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnLoad
             // 
@@ -164,6 +165,7 @@
             this.btnLoad.TabIndex = 13;
             this.btnLoad.Text = "Menampilkan data";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnInsert
             // 
@@ -183,6 +185,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "Mengubah Data";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
