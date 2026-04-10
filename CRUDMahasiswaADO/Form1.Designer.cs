@@ -44,7 +44,7 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -183,14 +183,15 @@
             this.button4.Text = "Mengubah Data";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnDelete
             // 
-            this.button5.Location = new System.Drawing.Point(709, 268);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(158, 34);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Menghapus Data";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(709, 268);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(158, 34);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Text = "Menghapus Data";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // dataGridView1
             // 
@@ -209,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 540);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnLoad);
@@ -253,7 +254,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

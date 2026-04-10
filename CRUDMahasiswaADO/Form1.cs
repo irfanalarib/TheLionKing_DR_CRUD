@@ -194,49 +194,6 @@ namespace CRUDMahasiswaADO
             }
         }
 
-        private void btnDelete_click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (conn.State == System.Data.ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-
-                DialogResult resultConfirm = MessageBox.Show
-                    ("Yakin ingin menghapus Data?", 
-                    "Konfirmasi", 
-                    MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Question);
-
-                if (resultConfirm == DialogResult.Yes)
-                {
-                    string query = "DELETE FROM Mahasiswa WHERE NIM = @NIM";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@NIM", txtNIM.Text);
-
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Data berhasil dihapus");
-                        ClearForm();
-                        btnLoad.PerformClick();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Data tidak ditemukan");
-                    }
-                }
-            
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
-            }
-        }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -286,6 +243,48 @@ namespace CRUDMahasiswaADO
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                DialogResult resultConfirm = MessageBox.Show
+                    ("Yakin ingin menghapus Data?", 
+                    "Konfirmasi", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
+
+                if (resultConfirm == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM Mahasiswa WHERE NIM = @NIM";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@NIM", txtNIM.Text);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Data berhasil dihapus");
+                        ClearForm();
+                        btnLoad.PerformClick();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data tidak ditemukan");
+                    }
+                }
+            
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+            }
         }
     }
 }
