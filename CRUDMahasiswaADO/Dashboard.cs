@@ -24,7 +24,8 @@ namespace CRUDMahasiswaADO
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            button = 1;
+            loadDataChart();
         }
 
         
