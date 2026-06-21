@@ -366,7 +366,7 @@ namespace CRUDMahasiswaADO
 
         private void btnRekapData_Click(object sender, EventArgs e)
         {
-            Form2 fm3 = new Form2();
+            FormRekap fm3 = new FormRekap();
             fm3.Show();
             this.Hide();
         }

@@ -47,7 +47,7 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -68,15 +68,15 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnRekapData = new System.Windows.Forms.Button();
             this.btnUploadGambar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.fotoMhs = new System.Windows.Forms.PictureBox();
+            this.btnImpExcel = new System.Windows.Forms.Button();
+            this.btnImpDb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mahasiswaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBAkademikADODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoMhs)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -222,15 +222,15 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // button4
+            // btnUpdate
             // 
-            this.button4.Location = new System.Drawing.Point(709, 220);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(158, 34);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Mengubah Data";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Location = new System.Drawing.Point(709, 220);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(158, 34);
+            this.btnUpdate.TabIndex = 15;
+            this.btnUpdate.Text = "Mengubah Data";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -419,41 +419,44 @@
             this.btnUploadGambar.TabIndex = 23;
             this.btnUploadGambar.Text = "Upload Gambar";
             this.btnUploadGambar.UseVisualStyleBackColor = true;
+            this.btnUploadGambar.Click += new System.EventHandler(this.btnUploadGambar_Click);
             // 
-            // pictureBox1
+            // fotoMhs
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(505, 107);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 110);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.fotoMhs.Location = new System.Drawing.Point(505, 107);
+            this.fotoMhs.Name = "fotoMhs";
+            this.fotoMhs.Size = new System.Drawing.Size(143, 110);
+            this.fotoMhs.TabIndex = 24;
+            this.fotoMhs.TabStop = false;
             // 
-            // button1
+            // btnImpExcel
             // 
-            this.button1.Location = new System.Drawing.Point(897, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 79);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Import form Excel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnImpExcel.Location = new System.Drawing.Point(897, 336);
+            this.btnImpExcel.Name = "btnImpExcel";
+            this.btnImpExcel.Size = new System.Drawing.Size(107, 79);
+            this.btnImpExcel.TabIndex = 25;
+            this.btnImpExcel.Text = "Import form Excel";
+            this.btnImpExcel.UseVisualStyleBackColor = true;
+            this.btnImpExcel.Click += new System.EventHandler(this.btnImpExcel_Click);
             // 
-            // button2
+            // btnImpDb
             // 
-            this.button2.Location = new System.Drawing.Point(897, 440);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 79);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Import to Database";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnImpDb.Location = new System.Drawing.Point(897, 440);
+            this.btnImpDb.Name = "btnImpDb";
+            this.btnImpDb.Size = new System.Drawing.Size(107, 79);
+            this.btnImpDb.TabIndex = 26;
+            this.btnImpDb.Text = "Import to Database";
+            this.btnImpDb.UseVisualStyleBackColor = true;
+            this.btnImpDb.Click += new System.EventHandler(this.btnImpDb_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 572);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnImpDb);
+            this.Controls.Add(this.btnImpExcel);
+            this.Controls.Add(this.fotoMhs);
             this.Controls.Add(this.btnUploadGambar);
             this.Controls.Add(this.btnRekapData);
             this.Controls.Add(this.lblTotal);
@@ -462,7 +465,7 @@
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnConnect);
@@ -487,7 +490,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoMhs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,7 +513,7 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
@@ -533,9 +536,9 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnRekapData;
         private System.Windows.Forms.Button btnUploadGambar;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox fotoMhs;
+        private System.Windows.Forms.Button btnImpExcel;
+        private System.Windows.Forms.Button btnImpDb;
     }
 }
 
