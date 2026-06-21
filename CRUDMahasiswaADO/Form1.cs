@@ -388,27 +388,15 @@ namespace CRUDMahasiswaADO
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    using (SqlCommand cmd = new SqlCommand("sp_CountMahasiswa", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                int total = (dbLogic.CountMhs().Equals(DBNull.Value)) ? 0 : dbLogic.CountMhs();
 
-                        SqlParameter outputParam = new SqlParameter("@Total", SqlDbType.Int);
-                        outputParam.Direction = ParameterDirection.Output;
-                        cmd.Parameters.Add(outputParam);
-
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-
-                        lblTotal.Text = "Total Mahasiswa: " + outputParam.Value.ToString();
-                    }
-                }
+                lblTotal.Text = "Total Mahasiswa : " + total;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal menghitung total: " + ex.Message);
+                SimpanLog(ex.Message);
+                MessageBox.Show("Gagal load data: " + ex.Message);
             }
 
             //LOAD DATA
