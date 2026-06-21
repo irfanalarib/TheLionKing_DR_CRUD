@@ -95,35 +95,28 @@ namespace CRUDMahasiswaADO
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_DeleteMahasiswa", conn))
+                DialogResult dg = MessageBox.Show(
+                    "Yakin ingin menghapus data?",
+                    "Konfirmasi",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (dg == DialogResult.Yes)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@NIM", SqlDbType.Char, 11).Value = txtNIM.Text;
-
-                    conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected < 0)
-                        MessageBox.Show("Data berhasil dihapus");
-                    else
-                        MessageBox.Show("Data tidak ditemukan");
-
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
+                    dbLogic.DeleteMhs(txtNIM.Text);
+                    MessageBox.Show("Data mahasiswa berhasil dihapus");
+                    ClearForm();
+                    btnLoad.PerformClick();
                 }
             }
             catch (SqlException ex)
             {
                 SimpanLog(ex.Message);
-                MessageBox.Show("SQL Error: " + ex.Message);
+                MessageBox.Show("SQL Error : " + ex.Message);
             }
             catch (Exception ex)
             {
                 SimpanLog(ex.Message);
-                MessageBox.Show("General Error: " + ex.Message);
+                MessageBox.Show("General Error : " + ex.Message);
             }
         }
 
