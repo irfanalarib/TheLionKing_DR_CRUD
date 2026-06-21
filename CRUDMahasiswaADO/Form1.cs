@@ -14,18 +14,9 @@ namespace CRUDMahasiswaADO
 
         DAL dbLogic = new DAL();
 
-        private void SimpanLog(string pesan)
+        private void SimpanLog(string message)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = @"INSERT INTO LogError VALUES (GETDATE(), @pesan)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@pesan", pesan);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            dbLogic.InsertLog(message);
         }
 
         private BindingSource bindingSource = new BindingSource();
