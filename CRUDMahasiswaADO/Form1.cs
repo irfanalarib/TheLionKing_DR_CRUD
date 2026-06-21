@@ -258,35 +258,30 @@ namespace CRUDMahasiswaADO
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_UpdateMahasiswa", conn))
+                byte[] ConvertImageToBytes(PictureBox pb)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@NIM", txtNIM.Text);
-                    cmd.Parameters.AddWithValue("@Nama", txtNama.Text);
-                    cmd.Parameters.AddWithValue("@JenisKelamin", cmbJK.Text);
-                    cmd.Parameters.AddWithValue("@TanggalLahir", dtpTanggalLahir.Value.Date);
-                    cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text);
-                    cmd.Parameters.AddWithValue("@KodeProdi", txtKodeProdi.Text);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-
-                    if (conn.State == ConnectionState.Open)
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        conn.Close();
+                        pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        return ms.ToArray();
                     }
                 }
+
+                byte[] imgBytes = ConvertImageToBytes(fotoMhs);
+                dbLogic.UpdateMhs(txtNIM.Text, txtNama.Text, txtAlamat.Text, cmbJK.Text, dtpTanggalLahir.Value.Date, txtKodeProdi.Text, imgBytes);
+                MessageBox.Show("Data mahasiswa berhasil diubah");
+                ClearForm();
+                btnLoad.PerformClick();
             }
             catch (SqlException ex)
             {
                 SimpanLog(ex.Message);
-                MessageBox.Show("SQL Error: " + ex.Message);
+                MessageBox.Show("SQL Error : " + ex.Message);
             }
             catch (Exception ex)
             {
                 SimpanLog(ex.Message);
-                MessageBox.Show("General Error: " + ex.Message);
+                MessageBox.Show("General Error : " + ex.Message);
             }
         }
 
