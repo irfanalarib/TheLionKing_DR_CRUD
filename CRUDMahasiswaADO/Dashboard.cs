@@ -68,7 +68,7 @@ namespace CRUDMahasiswaADO
                     foreach (DataRow row in dt.Rows)
                     {
                         string prodi = row["NamaProdi"].ToString();
-                        int Jumlah = Convert.ToInt32((long)row["JmlMhs"]);
+                        int Jumlah = Convert.ToInt32(row["JmlMhs"]);
                         s.Points.AddXY(prodi, Jumlah);
                     }
                     chartProdi.Series.Add(s);
@@ -85,7 +85,7 @@ namespace CRUDMahasiswaADO
                     foreach (DataRow row in dt.Rows)
                     {
                         string prodi = row["NamaProdi"].ToString();
-                        int jumlah = Convert.ToInt32((long)row["JmlhMhs"]);
+                        int jumlah = Convert.ToInt32(row["JmlMhs"]);
 
                         s.Points.AddXY(prodi, jumlah);
                     }

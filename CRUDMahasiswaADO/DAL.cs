@@ -11,12 +11,13 @@ namespace CRUDMahasiswaADO
 {
     internal class DAL
     {
-
+        public static string connectionString = "Data Source=DESKTOP-SEGECHR\\MUHIRFAN;Initial Catalog=DBAkademikADO;Integrated Security=True";
         public static string GetConnectionString()
         {
-            string connectionString = $"Data Source={GetLoacalIPAddress()};Initial Catalog=DBAkademikADO;User ID=sa;Password=irfanalarib2020;";
+            //string connectionString = $"Data Source={GetLoacalIPAddress()};Initial Catalog=DBAkademikADO;User ID=sa;Integrated Security=True";
             return connectionString;
         }
+
 
         SqlConnection conn = new SqlConnection(GetConnectionString());
 
@@ -33,7 +34,7 @@ namespace CRUDMahasiswaADO
             SqlCommand cmd = new SqlCommand("sp_CountMahasiswa", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter outputParam = new SqlParameter("@pCount", SqlDbType.Int);
+            SqlParameter outputParam = new SqlParameter("@Total", SqlDbType.Int);
             outputParam.Direction = ParameterDirection.Output;
 
             cmd.Parameters.Add(outputParam);
@@ -73,12 +74,14 @@ namespace CRUDMahasiswaADO
                 SqlCommand command = new SqlCommand("sp_InsertMahasiswa", conn);
                 command.CommandType = CommandType.StoredProcedure;
 
+                command.Transaction = trans;
+
                 command.Parameters.AddWithValue("pNIM", nim);
                 command.Parameters.AddWithValue("pNama", nama);
                 command.Parameters.AddWithValue("pAlamat", alamat);
                 command.Parameters.AddWithValue("pTanggalLahir", tanggalLahir);
                 command.Parameters.AddWithValue("pJenisKelamin", jenisKelamin);
-                command.Parameters.AddWithValue("pNmProdi", kodeProdi);
+                command.Parameters.AddWithValue("pKodeProdi", kodeProdi);
                 command.Parameters.AddWithValue("pFoto", foto);
 
                 command.ExecuteNonQuery();
@@ -87,6 +90,7 @@ namespace CRUDMahasiswaADO
             catch (Exception ex)
             {
                 trans.Rollback();
+                throw;
             }
             finally
             {
@@ -106,7 +110,7 @@ namespace CRUDMahasiswaADO
             command.Parameters.AddWithValue("pAlamat", alamat);
             command.Parameters.AddWithValue("pTanggalLahir", tanggalLahir);
             command.Parameters.AddWithValue("pJenisKelamin", jenisKelamin);
-            command.Parameters.AddWithValue("pNmProdi", kodeProdi);
+            command.Parameters.AddWithValue("pKodeProdi", kodeProdi);
             command.Parameters.AddWithValue("pFoto", foto);
 
             command.CommandType = CommandType.StoredProcedure;
@@ -119,7 +123,7 @@ namespace CRUDMahasiswaADO
                 conn.Open();
             }
             SqlCommand cmd = new SqlCommand("sp_DeleteMahasiswa", conn);
-            cmd.Parameters.AddWithValue("pNIM", nim);
+            cmd.Parameters.AddWithValue("NIM", nim);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.ExecuteNonQuery();
@@ -175,11 +179,11 @@ namespace CRUDMahasiswaADO
             {
                 conn.Open();
             }
-            SqlCommand cmd = new SqlCommand("sp_LogMessage", conn);
+            //SqlCommand cmd = new SqlCommand("sp_LogMessage", conn);
 
-            cmd.Parameters.AddWithValue("psn", message);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
+            //cmd.Parameters.AddWithValue("psn", message);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.ExecuteNonQuery();
         }
 
         public DataTable getProdi()
